@@ -16,21 +16,21 @@
 };
 
 / {
+    // ===============================
+    // X方向スクロール無効化用 transformer
+    // ===============================
+    scroll_transform: scroll_transform {
+        compatible = "zmk,input-transformer";
+        x_enable = <0>;  // X方向スクロールを無効
+        y_enable = <1>;  // Y方向スクロールは有効
+    };
+
     trackball_listener {
         compatible = "zmk,input-listener";
         device = <&trackball>;
 
         // ここで X方向無効化 transformer を追加
         input-processors = <&scroll_transform>;    };
-
-        // ===============================
-        // X方向スクロール無効化用 transformer
-        // ===============================
-        scroll_transform: scroll_transform {
-            compatible = "zmk,input-transformer";
-            x_enable = <0>;  // X方向スクロールを無効
-            y_enable = <1>;  // Y方向スクロールは有効
-        };
 };
 
 &pinctrl {
