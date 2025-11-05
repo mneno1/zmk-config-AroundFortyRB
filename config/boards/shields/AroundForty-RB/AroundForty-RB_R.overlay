@@ -20,7 +20,8 @@
     // X方向スクロール無効化用 transformer
     // ===============================
     scroll_transform: scroll_transform {
-        compatible = "zmk,input-transformer";
+        compatible = "zmk,input-transformer-mouse-wheel";
+        #input-processor-cells = <1>;
         x_enable = <0>;  // X方向スクロールを無効
         y_enable = <1>;  // Y方向スクロールは有効
     };
