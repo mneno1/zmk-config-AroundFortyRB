@@ -20,7 +20,8 @@
         compatible = "zmk,input-listener";
         device = <&trackball>;
 
-    };
+        // ここで X方向無効化 transformer を追加
+        input-processors = <&scroll_transform>;    };
 };
 
 &pinctrl {
@@ -64,4 +65,10 @@
     };
 };
 
-
+// ===============================
+// X方向スクロール無効化用 transformer
+// ===============================
+scroll_transform: scroll_transform {
+    compatible = "zmk,input-transformer";
+    mask = <(INPUT_TRANSFORM_DISABLE_X)>;  // ← X方向スクロールを無効化
+};
