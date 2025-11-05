@@ -24,6 +24,10 @@
         #input-processor-cells = <1>;
         x_enable = <0>;  // X方向スクロールを無効
         y_enable = <1>;  // Y方向スクロールは有効
+    
+        // binding で必須とされるプロパティ
+        x-codes = <0>;               // X方向は無効なので0
+        y-codes = <0x08>;            // REL_WHEEL のコード (ZMK devicetree binding参照)
     };
 
     trackball_listener {
