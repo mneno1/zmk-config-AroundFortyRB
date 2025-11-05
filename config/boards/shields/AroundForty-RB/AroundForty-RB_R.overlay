@@ -1,3 +1,4 @@
+
 #include "AroundForty-RB.dtsi"
 
 
@@ -16,22 +17,10 @@
 };
 
 / {
-    // ===============================
-    // X方向スクロール無効化用 transformer
-    // ===============================
-    scroll_transform: scroll_transform {
-        compatible = "zmk,input-processor-transform"; // ←ASCIIハイフンに修正
-        #input-processor-cells = <1>;
-        
-        axes = <0 1>;       // X=0, Y=1 の軸を定義
-        invert = <1 0>;     // X方向を反転ではなく無効に見せる
-    };
-
     trackball_listener {
         compatible = "zmk,input-listener";
         device = <&trackball>;
-    
-        input-processors = <&scroll_transform>;
+
     };
 };
 
@@ -75,4 +64,3 @@
 
     };
 };
-
