@@ -22,12 +22,9 @@
     scroll_transform: scroll_transform {
         compatible = "zmk,input-processor-transform"; // ←ASCIIハイフンに修正
         #input-processor-cells = <1>;
-        x_enable = <0>;  // X方向スクロールを無効
-        y_enable = <1>;  // Y方向スクロールは有効
-    
-        // binding で必須とされるプロパティ
-        x-codes = <0>;               // X方向は無効なので0
-        y-codes = <0x08>;            // REL_WHEEL のコード (ZMK devicetree binding参照)
+        
+        axes = <0 1>;       // X=0, Y=1 の軸を定義
+        invert = <1 0>;     // X方向を反転ではなく無効に見せる
     };
 
     trackball_listener {
