@@ -1,4 +1,6 @@
 
+#include <input/processors.dtsi>
+#include <dt-bindings/zmk/input_transform.h>
 #include "AroundForty-RB.dtsi"
 
 
@@ -17,10 +19,19 @@
 };
 
 / {
-    trackball_listener {
+    trackball_listener: trackball_listener {
         compatible = "zmk,input-listener";
         device = <&trackball>;
+    };
 
+    input_processors {
+        zip_scroll_x_scaler: zip_scroll_x_scaler {
+            compatible = "zmk,input-processor-scaler";
+            #input-processor-cells = <2>;
+            type = <INPUT_EV_REL>;
+            codes = <INPUT_REL_HWHEEL>;
+            track-remainders;
+        };
     };
 };
 
@@ -64,3 +75,15 @@
 
     };
 };
+
+&trackball_listener {
+    // スクロールをY方向に限定し、Y方向のスクロールを反転
+    scroller {
+        layers = <2>;
+        input-processors = <
+            &zip_xy_to_scroll_mapper
+            &zip_scroll_x_scaler 0 1
+            &zip_scroll_transform INPUT_TRANSFORM_Y_INVERT
+        >;
+    };
+}
