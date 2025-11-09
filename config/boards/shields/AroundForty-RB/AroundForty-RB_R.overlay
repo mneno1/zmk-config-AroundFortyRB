@@ -1,5 +1,5 @@
 #include "AroundForty-RB.dtsi"
-//#include <input/processors.dtsi>
+#include <input/processors.dtsi>
 #include <dt-bindings/zmk/input_transform.h>
 
 &default_transform {
@@ -17,11 +17,6 @@
 };
 
 / {
-    trackball_listener: trackball_listener {
-        compatible = "zmk,input-listener";
-        device = <&trackball>;
-    };
-
     input_processors {
         zip_scroll_x_scaler: zip_scroll_x_scaler {
             compatible = "zmk,input-processor-scaler";
@@ -30,6 +25,11 @@
             codes = <INPUT_REL_HWHEEL>;
             track-remainders;
         };
+    };
+
+    trackball_listener: trackball_listener {
+        compatible = "zmk,input-listener";
+        device = <&trackball>;
     };
 };
 
