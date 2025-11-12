@@ -36,6 +36,14 @@
             &zip_xy_to_scroll_mapper
             &zip_scroll_x_scaler 0 1
         >;
+ 
+        scroller {
+            layers = <4>;
+            input-processors = <
+                &zip_xy_to_scroll_mapper
+                &zip_scroll_transform INPUT_TRANSFORM_Y_INVERT
+            >;
+        };
     };
 };
 
