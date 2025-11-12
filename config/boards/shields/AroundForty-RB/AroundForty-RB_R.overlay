@@ -30,7 +30,11 @@
     trackball_listener {
         compatible = "zmk,input-listener";
         device = <&trackball>;
-        input-processors = <&zip_temp_layer 6 10000>;
+        input-processors = <
+            &zip_temp_layer 6 10000
+            &zip_xy_to_scroll_mapper
+            &zip_scroll_x_scaler 0 1
+        >;
     };
 };
 
@@ -81,12 +85,4 @@
         17 // K
         18 // l
     >;
-};
-
-&zip_scroll_x_scaler {
-    compatible = "zmk,input-processor-scaler";
-    #input-processor-cells = <2>;
-    type = <INPUT_EV_REL>;
-    codes = <INPUT_REL_HWHEEL>;
-    track-remainders;
 };
