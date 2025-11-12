@@ -34,14 +34,14 @@
 
         input-processors = <&zip_temp_layer 6 10000>;
  
-//        scroller {
-//            layers = <2 6>;
-//            input-processors = <
-//                &zip_xy_to_scroll_mapper
-//                &zip_scroll_x_scaler 0 1
-//                &zip_scroll_transform INPUT_TRANSFORM_Y_INVERT
-//            >;
-//        };
+        scroller {
+            layers = <2>;
+            input-processors = <
+                &zip_xy_to_scroll_mapper
+                &zip_scroll_x_scaler 0 1
+                &zip_scroll_transform INPUT_TRANSFORM_Y_INVERT
+            >;
+        };
     };
 };
 
