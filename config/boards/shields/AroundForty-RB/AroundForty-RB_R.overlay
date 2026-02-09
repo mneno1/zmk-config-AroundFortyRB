@@ -33,7 +33,10 @@
     trackball_listener {
         compatible = "zmk,input-listener";
         device = <&trackball>;
-        input-processors = <&zip_xy_scaler 1 1>;
+        input-processors = <
+            &zip_xy_scaler 1 1
+            &zip_temp_layer 6 2000
+        >;
         scroll-layer {
             layers = <2>;
             // X方向スクロール無効, スクロール量 2/3, Y方向スクロール反転
@@ -89,6 +92,16 @@
         irq-gpios = <&gpio0 2 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
         force-awake;
     };
+};
+
+&zip_temp_layer {
+    require-prior-idle-ms = <200>;
+    excluded-positions = <
+        15 // H
+        16 // J
+        17 // K
+        18 // L
+    >;
 };
 
 
